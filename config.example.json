@@ -1,0 +1,20 @@
+{
+  "port": 8766,
+  "token": "REPLACE_WITH_64_HEX_CHARACTERS",
+  "ffmpeg": "ffmpeg",
+  "hardwareDecode": "none",
+  "renewDeveloperMode": true,
+  "sources": {
+    "entrance": "rtsp://192.0.2.20:554/REPLACE_STREAM_PATH"
+  },
+  "tvs": {
+    "lounge": {
+      "host": "192.0.2.30",
+      "port": 9922,
+      "username": "prisoner",
+      "privateKey": "private/lounge-key",
+      "passphrase": "REPLACE_WITH_TV_PASSPHRASE",
+      "hostKeySha256": "REPLACE_WITH_VERIFIED_SHA256_HEX"
+    }
+  }
+}

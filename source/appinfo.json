@@ -1,0 +1,18 @@
+{
+  "id": "com.mbs.cameraoverlay",
+  "version": "1.0.0",
+  "vendor": "MBS Integrations",
+  "type": "web",
+  "main": "index.html",
+  "title": "Camera Overlay",
+  "icon": "icon.png",
+  "appDescription": "Live camera overlay for native LG TV apps.",
+  "resolution": "1920x1080",
+  "transparent": true,
+  "defaultWindowType": "overlay",
+  "handlesRelaunch": true,
+  "noSplashOnLaunch": true,
+  "spinnerOnLaunch": false,
+  "disableBackHistoryAPI": true,
+  "requiredACG": []
+}

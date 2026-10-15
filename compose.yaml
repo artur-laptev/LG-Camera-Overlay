@@ -1,0 +1,20 @@
+services:
+  camera-overlay:
+    build: .
+    restart: unless-stopped
+    init: true
+    # No published ports: TV SSH forwarding reaches container loopback directly.
+    volumes:
+      - ./private:/data/private
+      - ./logs:/data/logs
+    read_only: true
+    tmpfs:
+      - /tmp:size=16m
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    mem_limit: 512m
+    healthcheck:
+      test: [CMD, node, -e, "fetch('http://127.0.0.1:8766/health').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 3

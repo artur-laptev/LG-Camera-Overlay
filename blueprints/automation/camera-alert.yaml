@@ -1,0 +1,72 @@
+blueprint:
+  name: LG Camera Overlay - detection with priority and cooldown
+  description: One coordinator for normal detection and priority doorbell triggers. Choose launch actions for each camera/TV; the first normal event wins during cooldown. Priority events interrupt and restart cooldown. Turning this automation off pauses only these alerts.
+  domain: automation
+  author: MBS Integrations
+  source_url: https://github.com/mbsintegrations/LG-Camera-Overlay/blob/main/blueprints/automation/camera-alert.yaml
+  homeassistant:
+    min_version: '2024.10.0'
+  input:
+    detection_triggers:
+      name: Normal detection triggers
+      description: Choose actual person/vehicle/motion triggers. Avoid broad motion if you want smart detections only.
+      default: []
+      selector:
+        trigger: {}
+    priority_triggers:
+      name: Priority triggers
+      description: Choose your actual doorbell event type or binary sensor. Set each priority trigger ID to priority in its menu. Priority bypasses the cooldown.
+      default: []
+      selector:
+        trigger: {}
+    normal_actions:
+      name: Normal launch actions
+      description: Call your camera launch scripts. Use a Choose action on trigger.entity_id to route different sensors to different cameras.
+      selector:
+        action: {}
+    priority_actions:
+      name: Priority launch actions
+      selector:
+        action: {}
+    cooldown:
+      name: Shared cooldown timer helper
+      description: Create a Timer helper first; use a dedicated timer for this coordinator.
+      selector:
+        entity:
+          domain: timer
+    cooldown_seconds:
+      name: Cooldown
+      default: 60
+      selector:
+        number:
+          min: 1
+          max: 600
+          unit_of_measurement: seconds
+mode: queued
+max: 10
+max_exceeded: silent
+triggers:
+  - triggers: !input detection_triggers
+  - triggers: !input priority_triggers
+actions:
+  - choose:
+      - conditions:
+          - condition: trigger
+            id: priority
+        sequence:
+          - action: timer.start
+            target:
+              entity_id: !input cooldown
+            data:
+              duration: !input cooldown_seconds
+          - sequence: !input priority_actions
+    default:
+      - condition: state
+        entity_id: !input cooldown
+        state: idle
+      - action: timer.start
+        target:
+          entity_id: !input cooldown
+        data:
+          duration: !input cooldown_seconds
+      - sequence: !input normal_actions

@@ -1,0 +1,20 @@
+{
+  "name": "lg-camera-overlay",
+  "version": "1.0.0",
+  "private": true,
+  "license": "GPL-3.0-only",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node relay/relay.cjs",
+    "test": "node tests/overlay.cjs && node tests/multitv.cjs && node --test tests/config.test.cjs",
+    "check": "node scripts/check-config.cjs",
+    "build": "node scripts/build.cjs",
+    "pair": "node scripts/pair.cjs"
+  },
+  "dependencies": {
+    "ssh2": "1.17.0",
+    "ws": "8.22.0"
+  }
+}

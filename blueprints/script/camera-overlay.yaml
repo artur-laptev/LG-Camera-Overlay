@@ -1,0 +1,65 @@
+blueprint:
+  name: LG Camera Overlay - launch one camera on one TV
+  description: Launch the installed TV overlay only while the chosen TV is already active. Create one script per TV/camera combination.
+  domain: script
+  author: MBS Integrations
+  source_url: https://github.com/mbsintegrations/LG-Camera-Overlay/blob/main/blueprints/script/camera-overlay.yaml
+  homeassistant:
+    min_version: '2024.10.0'
+  input:
+    tv:
+      name: LG TV
+      selector:
+        entity:
+          filter:
+            - domain: media_player
+              integration: webostv
+    stream:
+      name: Private loopback stream URL
+      description: 'ws://127.0.0.1:8766/live/YOUR_TOKEN/CAMERA_ID/TV_ID — treat as a secret; do not post traces publicly.'
+      selector:
+        text: {}
+    label:
+      name: Camera label
+      default: Camera
+      selector:
+        text: {}
+    duration:
+      name: Total display duration
+      default: 30
+      selector:
+        number:
+          min: 15
+          max: 90
+          unit_of_measurement: seconds
+    width:
+      name: Panel width
+      default: 42
+      selector:
+        number:
+          min: 25
+          max: 55
+          unit_of_measurement: '%'
+    app_id:
+      name: Installed application ID
+      default: com.mbs.cameraoverlay
+      selector:
+        text: {}
+mode: restart
+sequence:
+  - condition: state
+    entity_id: !input tv
+    state: ['on', playing, paused, idle, buffering]
+  - action: webostv.command
+    target:
+      entity_id: !input tv
+    data:
+      command: system.launcher/launch
+      payload:
+        id: !input app_id
+        params:
+          stream: !input stream
+          label: !input label
+          duration: !input duration
+          width: !input width
+          sentAt: '{{ (as_timestamp(now()) * 1000) | int }}'
