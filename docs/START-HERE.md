@@ -252,7 +252,7 @@ Here `127.0.0.1` means the LG TV's own connection. The route stays identical for
 5. Choose a camera label, 30 seconds and 42% width. Leave the app ID as `com.mbs.cameraoverlay`. Save the script as, for example, **Show entrance camera**.
 6. With the TV already playing something, run the script. Check moving camera video, the underlying picture and sound, timer dismissal, and BACK dismissal on a second run.
 
-**Success:** the camera panel appears over the programme and closes cleanly. Only then follow [optional automatic alerts](HOME-ASSISTANT.md#add-optional-automatic-alerts) to connect person/vehicle/doorbell detections. A manual script is enough to start; automatic alerts are optional.
+**Success:** the camera panel appears over the programme and closes cleanly. A manual script is enough to start; automatic alerts are optional. To add them, read [how detections reach Home Assistant](DETECTION-FLOW.md), then follow [automatic alert setup](HOME-ASSISTANT.md#add-optional-automatic-alerts). The first guide explains our UniFi example and the separate HA signal needed from other systems; an RTSP camera feed alone does not provide that signal. Check the [tested and operating setup matrix](VALIDATION.md#tested-and-operating-setups) for what has actually been validated.
 
 ## 8. Keep it available
 

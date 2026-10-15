@@ -29,6 +29,14 @@ The TV app, relay and Home Assistant configuration are three separate installati
 - Reusable HA launch and alert blueprints, configurable camera routing, shared cooldown and doorbell priority.
 - Loopback-only relay: no router port forwarding or public camera endpoint.
 
+## What tells it to show a camera?
+
+There are two separate paths: **RTSP/RTSPS provides video; a detection signal in Home Assistant triggers the overlay.** In the operating UniFi reference, Protect's person/vehicle sensors and doorbell events trigger HA rules, which select a camera, apply cooldown/priority and launch the app on already-on LG TVs. The relay does not perform object detection or read zone polygons.
+
+Read [the complete detection flow](docs/DETECTION-FLOW.md) for the UniFi setup, the distinction between camera detections and notification-zone filters, and what other systems must provide to HA. Other camera/NVR integrations, Frigate, MQTT, webhooks or separate sensors are possible trigger sources, but have not been validated by this project.
+
+**Operating reference:** UniFi Protect + HA native integrations + a native relay on an Apple Silicon Mac mini + LG OLED65B9PLA and 65NANO766QA. This installation predates public v1.0.0. Public-release tests used a separate NAS-hosted HA Docker lab and a native Mac relay; the relay Docker container was tested separately in CI. See the [tested and operating setup matrix](docs/VALIDATION.md#tested-and-operating-setups) before choosing a deployment.
+
 ## Compatibility
 
 The predecessor deployment was physically confirmed on **OLED65B9PLA / SDK 4.10.0** over YouTube and Netflix, and **65NANO766QA / SDK 7.6.0** over Netflix. These are historical observations, not certification of every firmware or this release. See [release validation](docs/VALIDATION.md) for new-build evidence and remaining limits.

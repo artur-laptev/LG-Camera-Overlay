@@ -1,5 +1,25 @@
 # Validation record
 
+## Tested and operating setups
+
+Status recorded 16 October 2026. “Operating reference” means the existing installation preserved during release work, supported by saved deployment evidence and user viewing reports. It is not a new live audit of production HA or a claim that the reference was upgraded to public v1.0.0.
+
+| Setup or behaviour | Evidence | Limits |
+|---|---|---|
+| Operating reference: UniFi Protect detections/medium streams → HA native Protect and LG integrations → native Node/FFmpeg relay on Apple Silicon Mac mini → LG TVs | Existing household deployment, original app recorded as v0.3.1; saved rules and user confirmations | Household scripts predate the public blueprints; production HA version/host and Protect version were not freshly inventoried for this publication |
+| Living Room LG OLED65B9PLA, SDK 4.10.0 | Historical physical YouTube/Netflix acceptance; user-confirmed native Plex and Apple TV HDMI Plex viewing | Plex report did not identify package version or separately itemize audio/BACK/timeout |
+| Second LG 65NANO766QA, SDK 7.6.0 | Historical physical Netflix acceptance, including video, underlying audio and automatic close | Not a public v1.0.0 acceptance test on this model |
+| Reference person detection and doorbell priority | Historical real walk triggered Front Right and suppressed overlapping Front Left; physical entry ring took over during cooldown | Not exhaustive zone-boundary, road-traffic/vehicle or simultaneous physical multi-TV detection validation |
+| User photo session, 16 October 2026 | Direct launch of the existing Living Room TV app was accepted; user supplied photos showing the Front Left panel over a programme | Did not use HA detection triggers; README image is AI-retouched, not raw timing evidence |
+| Public-release lab: HA 2026.10.1 in a NAS Docker container, native LG integration, separate test TV app and native macOS ARM64 relay with software decoding | Blueprint import, inert event/counter rules and actual OLED65B9PLA video telemetry; firmware 05.50.00 / SDK 4.10.0 | The relay was on the Mac, not inside the NAS HA container; physical zone/ring inputs were not replayed through these public blueprints |
+| Linux x86-64 relay Docker container in CI | Real FFmpeg synthetic stream, WebSocket and cleanup checks, with simulated SSH | No physical NAS/Linux-container-to-TV route tested |
+| Windows/macOS automated tests | Node tests and relevant build checks passed | Does not prove Docker Desktop networking, startup or physical TV playback |
+| Windows Docker Desktop, Mac Docker Desktop, ARM64 Docker/Pi, shared HA/relay hosts | Documented installation approaches and resource recommendations | No end-to-end physical acceptance or benchmarked minimum for these deployments |
+| Non-UniFi detectors/cameras, including Frigate, MQTT and webhooks | Possible connection patterns described in [detection flow](DETECTION-FLOW.md) | Not tested integrations for this project; video and detection need independent validation |
+| Direct HA OS App installation | Feasible future packaging route | No App package supplied or tested |
+
+The NAS HA lab was stopped after testing. The operating reference app/relay was retained. Detailed release tests follow; they must not be read as certification of the untested rows above.
+
 ## Release preparation, 15 October 2026
 
 Automated checks cover app launch/relaunch cleanup, stale callbacks, BACK and timeout, URL and size/duration bounds; shared encoders, independent TV replacement, slow clients, rejected routes, pinned SSH identity, software fallback, spawn-failure cleanup, private stderr suppression, per-TV renewal thresholds and retry scheduling; and strict configuration validation.

@@ -24,6 +24,8 @@ Create additional scripts for each camera/TV combination. For several TVs, make 
 
 ## Add optional automatic alerts
 
+First read [how detections reach HA and select a stream](DETECTION-FLOW.md). It covers our operating UniFi rules, detection-zone limits and the signals required from other systems. A working RTSP stream alone does not create automatic alerts. The public blueprints were tested in the dedicated HA lab with inert event/counter triggers; real person/doorbell acceptance belongs to the older operating reference, as detailed in [validation](VALIDATION.md#tested-and-operating-setups).
+
 Create a **Timer** helper in Settings → Devices & services → Helpers, named for this overlay's cooldown. Keep this timer dedicated to one alert coordinator. Then import:
 
 ```text
