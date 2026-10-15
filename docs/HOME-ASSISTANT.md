@@ -1,5 +1,7 @@
 # Home Assistant setup
 
+The relay can share suitable hardware with HA. For HA Container, use a separate relay container on the host; direct installation through HA OS would require an App package that this release does not provide. See [hosting options and hardware recommendations](HOSTING.md).
+
 ## Add the TV
 
 In Settings → Devices & services, add **LG webOS TV** using the television's IP. Accept the connection prompt on the TV if shown. This pairing is separate from Developer Mode SSH pairing. Open the resulting media player and confirm it reports the TV's current state. Do not add a wake action for camera alerts.
