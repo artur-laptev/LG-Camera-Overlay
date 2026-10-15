@@ -41,7 +41,7 @@ async function maintainDevMode(tv=tvs.get("living_room")||tvs.values().next().va
   next=3600000;tv.sessionStatus={checked_at:new Date().toISOString(),success:false,error:"Session check failed; retry in one hour"};
   log("devmode_session_check_failed",{tv_id:tv.id});
  }
- if(tv.id==="living_room")sessionStatus=tv.sessionStatus;
+ if(tv===tvs.values().next().value)sessionStatus=tv.sessionStatus;
  if(!stopping)tv.sessionTimer=setTimeout(()=>maintainDevMode(tv),next).unref();
 }
 function stopStream(group){

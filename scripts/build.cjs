@@ -8,4 +8,4 @@ if(process.argv.includes('--test')){meta.id='com.mbs.cameraoverlaytest';meta.tit
 fs.writeFileSync(path.join(stage,'appinfo.json'),JSON.stringify(meta,null,2)+'\n');
 fs.mkdirSync(path.join(root,'dist'),{recursive:true});
 const cli=path.join(root,'tooling/node_modules/@webos-tools/cli/bin/ares-package');
-const run=spawnSync(process.execPath,[cli,stage,'-o',path.join(root,'dist')],{stdio:'inherit'});process.exitCode=run.status||0;if(run.error)throw run.error;
+const run=spawnSync(process.execPath,[cli,'--no-minify',stage,'-o',path.join(root,'dist')],{stdio:'inherit'});process.exitCode=run.status||0;if(run.error)throw run.error;

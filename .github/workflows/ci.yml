@@ -28,6 +28,7 @@ jobs:
           node-version: '22'
       - run: npm ci --prefix tooling --ignore-scripts
       - run: npm run build
+      - run: node scripts/verify-package.cjs
       - uses: actions/upload-artifact@v4
         with:
           name: tv-package
