@@ -16,8 +16,19 @@ GitHub CI passed on Ubuntu, Windows and macOS, packaged the TV app on Linux, and
 
 The production HA instance was not used for project changes or launch tests. Public-package testing used only the dedicated lab. Existing production app/relay configuration was preserved.
 
+## User-confirmed Plex viewing, 15 October 2026
+
+The user confirmed that the overlay works on the Living Room **LG OLED65B9PLA** in both cases:
+
+| Playback path | Result |
+|---|---|
+| Plex running directly on LG webOS | User-confirmed working |
+| Plex running on an Apple TV connected to the LG through HDMI | User-confirmed working |
+
+These reports establish compatibility for the working installation and those two playback paths. The exact overlay package version was not identified in the reports, and separate audio, BACK and timeout checks were not itemized. They do not certify every Plex version, TV firmware or HDMI source.
+
 ## Remaining physical/platform limits
 
-Historical YouTube/Netflix viewing confirmation for the predecessor is documented in README. New-release physical viewing confirmation, BACK/timeout as seen by a person, Plex/Disney+, other TV models/firmware, actual road-traffic/vehicle filtering, simultaneous physical detection on multiple TVs, Mac reboot/login, TV power-cycle recovery and phone dashboard layout are not established by the automated tests above. Do not treat this matrix as universal compatibility or a latency guarantee.
+Historical YouTube/Netflix viewing confirmation for the predecessor is documented in README; the Plex confirmations above extend the known playback paths. Physical viewing tied specifically to the released 1.0.0 package, BACK/timeout as seen by a person, Disney+, other TV models/firmware and HDMI source/app combinations, actual road-traffic/vehicle filtering, simultaneous physical detection on multiple TVs, Mac reboot/login, TV power-cycle recovery and phone dashboard layout remain unverified. Do not treat this matrix as universal compatibility or a latency guarantee.
 
 Runtime dependencies are audited separately from the official build tool. Docker and cross-platform CI results are visible on the matching release commit; a Docker build alone does not prove a real NAS-to-TV path. No FFmpeg binary/container image is published.

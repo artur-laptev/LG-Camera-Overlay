@@ -126,7 +126,7 @@ Follow [Home Assistant setup](HOME-ASSISTANT.md). The launch URL is:
 ws://127.0.0.1:8766/live/YOUR_TOKEN/entrance/lounge
 ```
 
-`127.0.0.1` means **the TV**, not HA or the server. `entrance` and `lounge` must match your private config exactly. Test over a native app already playing, then check live motion, underlying picture and sound, BACK, and timeout. Test each native app you rely on separately. Only after those checks should you enable detection triggers.
+`127.0.0.1` means **the TV**, not HA or the server. `entrance` and `lounge` must match your private config exactly. Test over a native app or HDMI source already playing, then check live motion, underlying picture and sound, BACK, and timeout. Native LG Plex and Plex through Apple TV over HDMI have been user-confirmed on the OLED65B9PLA; test each app and source you rely on separately. The overlay app is installed on the LG, including when watching Apple TV. Only after those checks should you enable detection triggers.
 
 ## 8. Run persistently
 
