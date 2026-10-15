@@ -2,6 +2,10 @@
 
 Show a live camera panel over what you are watching on an LG webOS TV, including native TV apps and an Apple TV connected through HDMI. Home Assistant chooses when it appears; BACK or a timer dismisses it. Camera audio is disabled so the underlying app keeps its sound.
 
+![LG television showing a programme with the Front Left live camera overlay in the upper-right corner](docs/images/lg-camera-overlay-tv.png)
+
+*AI-retouched illustration based on a user photo of the working installation. Cropped to the TV and perspective-corrected; fine details may differ from the original. See [validation](docs/VALIDATION.md) for test evidence.*
+
 User-confirmed viewing includes YouTube, Netflix and Plex on the tested LG TVs, plus Plex playing on an Apple TV connected to the OLED65B9PLA through HDMI. See the compatibility details below for the tested combinations.
 
 **[Start here: choose Windows, Mac or Linux Docker](docs/START-HERE.md)** · [Detailed installation reference](docs/INSTALL.md) · [Releases](https://github.com/mbsintegrations/LG-Camera-Overlay/releases) · [Home Assistant setup](docs/HOME-ASSISTANT.md) · [Troubleshooting](docs/TROUBLESHOOTING.md)
