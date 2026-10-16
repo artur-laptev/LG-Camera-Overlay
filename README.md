@@ -39,6 +39,15 @@ Read [the complete detection flow](docs/DETECTION-FLOW.md) for the UniFi setup, 
 
 ## Compatibility
 
+Recorded software versions for the two TVs with confirmed overlay viewing:
+
+| LG TV model | TV firmware | webOS SDK version |
+|---|---|---|
+| OLED65B9PLA | 05.50.00 | 4.10.0 |
+| 65NANO766QA | 04.60.91 | 7.6.0 |
+
+These are recorded device values, not minimum requirements. The SDK version is the TV's reported `sdkVersion`; a separate webOS marketing/platform version was not captured. Firmware and SDK values are not interchangeable. See [version evidence](docs/VALIDATION.md#tv-software-version-evidence) for dates and limits.
+
 The predecessor deployment was physically confirmed on **OLED65B9PLA / SDK 4.10.0** over YouTube and Netflix, and **65NANO766QA / SDK 7.6.0** over Netflix. These are historical observations, not certification of every firmware or this release. See [release validation](docs/VALIDATION.md) for new-build evidence and remaining limits.
 
 On 15 October 2026, the user also confirmed that the overlay works on the **OLED65B9PLA** both with **Plex running directly on the LG** and with **Plex running on an Apple TV connected through HDMI**. The Apple TV requires no overlay app; the LG renders the panel above its HDMI picture. These are confirmations of the working installation; the exact package version was not identified in the viewing report.

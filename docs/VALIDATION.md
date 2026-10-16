@@ -7,8 +7,8 @@ Status recorded 16 October 2026. “Operating reference” means the existing in
 | Setup or behaviour | Evidence | Limits |
 |---|---|---|
 | Operating reference: UniFi Protect detections/medium streams → HA native Protect and LG integrations → native Node/FFmpeg relay on Apple Silicon Mac mini → LG TVs | Existing household deployment, original app recorded as v0.3.1; saved rules and user confirmations | Household scripts predate the public blueprints; production HA version/host and Protect version were not freshly inventoried for this publication |
-| Living Room LG OLED65B9PLA, SDK 4.10.0 | Historical physical YouTube/Netflix acceptance; user-confirmed native Plex and Apple TV HDMI Plex viewing | Plex report did not identify package version or separately itemize audio/BACK/timeout |
-| Second LG 65NANO766QA, SDK 7.6.0 | Historical physical Netflix acceptance, including video, underlying audio and automatic close | Not a public v1.0.0 acceptance test on this model |
+| Living Room LG OLED65B9PLA, firmware 05.50.00 / webOS SDK 4.10.0 | Historical physical YouTube/Netflix acceptance; user-confirmed native Plex and Apple TV HDMI Plex viewing | Plex report did not identify package version or separately itemize audio/BACK/timeout |
+| Second LG 65NANO766QA, firmware 04.60.91 / webOS SDK 7.6.0 | Historical physical Netflix acceptance, including video, underlying audio and automatic close | Not a public v1.0.0 acceptance test on this model |
 | Both LG TVs with Apple TV and NVIDIA SHIELD TV Pro over HDMI | User reported overlay appearance with Netflix, Amazon Prime Video and Plex on each player and each TV: all 12 combinations, detailed below | Appearance confirmed; player/app versions, video modes and per-combination audio/BACK/timeout results were not itemized |
 | Reference person detection and doorbell priority | Historical real walk triggered Front Right and suppressed overlapping Front Left; physical entry ring took over during cooldown | Not exhaustive zone-boundary, road-traffic/vehicle or simultaneous physical multi-TV detection validation |
 | User photo session, 16 October 2026 | Direct launch of the existing Living Room TV app was accepted; user supplied photos showing the Front Left panel over a programme | Did not use HA detection triggers; README image is AI-retouched, not raw timing evidence |
@@ -20,6 +20,17 @@ Status recorded 16 October 2026. “Operating reference” means the existing in
 | Direct HA OS App installation | Feasible future packaging route | No App package supplied or tested |
 
 The NAS HA lab was stopped after testing. The operating reference app/relay was retained. Detailed release tests follow; they must not be read as certification of the untested rows above.
+
+## TV software version evidence
+
+| LG TV model | TV firmware | Reported webOS SDK (`sdkVersion`) | Evidence |
+|---|---|---|---|
+| OLED65B9PLA | 05.50.00 | 4.10.0 | Recorded in the 12 October 2026 deployment and reconfirmed during public-release lab testing |
+| 65NANO766QA | 04.60.91 | 7.6.0 | Recorded in the 12 October 2026 deployment; not freshly queried on 16 October because the TV was unreachable |
+
+A separate webOS marketing/platform version was not captured. Firmware and SDK are distinct values; neither should be relabelled as the other or treated as a minimum supported version. Subsequent viewing reports did not independently recheck software versions.
+
+An additional **55NANO766QA** reported firmware **04.60.91** and SDK **7.6.0** through the Developer Mode CLI on 16 October 2026. Its overlay test was cancelled before app installation or playback, so it is **not a tested overlay model**. Matching firmware and SDK alone do not establish compatibility.
 
 ## Release preparation, 15 October 2026
 
