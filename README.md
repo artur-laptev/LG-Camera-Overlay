@@ -1,12 +1,12 @@
 # LG Camera Overlay
 
-Show a live camera panel over what you are watching on an LG webOS TV, including native TV apps and an Apple TV connected through HDMI. Home Assistant chooses when it appears; BACK or a timer dismisses it. Camera audio is disabled so the underlying app keeps its sound.
+Show a live camera panel over what you are watching on an LG webOS TV, including native TV apps and HDMI sources such as Apple TV and NVIDIA SHIELD TV Pro. Home Assistant chooses when it appears; BACK or a timer dismisses it. Camera audio is disabled so the underlying app keeps its sound.
 
 ![LG television showing a programme with the Front Left live camera overlay in the upper-right corner](docs/images/lg-camera-overlay-tv.png)
 
 *AI-retouched illustration based on a user photo of the working installation. Cropped to the TV and perspective-corrected; fine details may differ from the original. See [validation](docs/VALIDATION.md) for test evidence.*
 
-User-confirmed viewing includes YouTube, Netflix and Plex on the tested LG TVs, plus Plex playing on an Apple TV connected to the OLED65B9PLA through HDMI. See the compatibility details below for the tested combinations.
+User-confirmed viewing includes native LG apps and successful overlay appearance over **Netflix, Amazon Prime Video and Plex on both Apple TV and NVIDIA SHIELD TV Pro**, connected through HDMI to each of the two tested LG TVs. See the [viewing matrix](docs/VALIDATION.md#user-confirmed-hdmi-viewing-16-october-2026) for the exact combinations and scope.
 
 **[Start here: choose Windows, Mac or Linux Docker](docs/START-HERE.md)** · [Detailed installation reference](docs/INSTALL.md) · [Releases](https://github.com/mbsintegrations/LG-Camera-Overlay/releases) · [Home Assistant setup](docs/HOME-ASSISTANT.md) · [Troubleshooting](docs/TROUBLESHOOTING.md)
 
@@ -42,6 +42,8 @@ Read [the complete detection flow](docs/DETECTION-FLOW.md) for the UniFi setup, 
 The predecessor deployment was physically confirmed on **OLED65B9PLA / SDK 4.10.0** over YouTube and Netflix, and **65NANO766QA / SDK 7.6.0** over Netflix. These are historical observations, not certification of every firmware or this release. See [release validation](docs/VALIDATION.md) for new-build evidence and remaining limits.
 
 On 15 October 2026, the user also confirmed that the overlay works on the **OLED65B9PLA** both with **Plex running directly on the LG** and with **Plex running on an Apple TV connected through HDMI**. The Apple TV requires no overlay app; the LG renders the panel above its HDMI picture. These are confirmations of the working installation; the exact package version was not identified in the viewing report.
+
+On 16 October 2026, the user reported that the overlay appeared on **both OLED65B9PLA and 65NANO766QA**, testing **Netflix, Amazon Prime Video and Plex on Apple TV and NVIDIA SHIELD TV Pro** through HDMI: all 12 TV/player/service combinations. The overlay runs on the LG, so no overlay software is installed on either HDMI player. This architecture suggests independence from the connected player's app, but the confirmed combinations do not guarantee every HDMI device, video mode or TV firmware. See [test details](docs/VALIDATION.md#user-confirmed-hdmi-viewing-16-october-2026).
 
 The transparent overlay window flag is not a documented LG compatibility contract. Protected video apps, firmware changes and other TV models can behave differently. Disney+ and other HDMI source/app combinations still require their own viewing checks. Developer Mode is required; root is not.
 
