@@ -1,5 +1,9 @@
 # LG Camera Overlay
 
+[![Validation](https://github.com/mbsintegrations/LG-Camera-Overlay/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/mbsintegrations/LG-Camera-Overlay/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/mbsintegrations/LG-Camera-Overlay?include_prereleases)](https://github.com/mbsintegrations/LG-Camera-Overlay/releases)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
+
 [![PayPal](https://img.shields.io/badge/PayPal-00457C?style=flat&logo=paypal&logoColor=white)](https://paypal.me/mwahl1973)
 
 Show a live camera panel over what you are watching on an LG webOS TV, including native TV apps and HDMI sources such as Apple TV and NVIDIA SHIELD TV Pro. Home Assistant chooses when it appears; BACK or a timer dismisses it. Camera audio is disabled so the underlying app keeps its sound.
