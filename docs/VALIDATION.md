@@ -27,6 +27,7 @@ The NAS HA lab was stopped after testing. The operating reference app/relay was 
 |---|---|---|---|
 | OLED65B9PLA | 05.50.00 | 4.10.0 | Recorded in the 12 October 2026 deployment and reconfirmed during public-release lab testing |
 | 65NANO766QA | 04.60.91 | 7.6.0 | Recorded in the 12 October 2026 deployment; not freshly queried on 16 October because the TV was unreachable |
+| 55NANO766QA | 04.60.91 | 7.6.0 | Queried through the Developer Mode CLI on 16 October 2026 |
 
 A separate webOS marketing/platform version was not captured. Firmware and SDK are distinct values; neither should be relabelled as the other or treated as a minimum supported version. Subsequent viewing reports did not independently recheck software versions.
 

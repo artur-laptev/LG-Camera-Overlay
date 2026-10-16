@@ -39,12 +39,13 @@ Read [the complete detection flow](docs/DETECTION-FLOW.md) for the UniFi setup, 
 
 ## Compatibility
 
-Recorded software versions for the two TVs with confirmed overlay viewing:
+Recorded TV software versions:
 
 | LG TV model | TV firmware | webOS SDK version |
 |---|---|---|
 | OLED65B9PLA | 05.50.00 | 4.10.0 |
 | 65NANO766QA | 04.60.91 | 7.6.0 |
+| 55NANO766QA | 04.60.91 | 7.6.0 |
 
 These are recorded device values, not minimum requirements. The SDK version is the TV's reported `sdkVersion`; a separate webOS marketing/platform version was not captured. Firmware and SDK values are not interchangeable. See [version evidence](docs/VALIDATION.md#tv-software-version-evidence) for dates and limits.
 
