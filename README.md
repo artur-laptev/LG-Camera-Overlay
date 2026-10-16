@@ -1,5 +1,7 @@
 # LG Camera Overlay
 
+[![PayPal](https://img.shields.io/badge/PayPal-00457C?style=flat&logo=paypal&logoColor=white)](https://paypal.me/mwahl1973)
+
 Show a live camera panel over what you are watching on an LG webOS TV, including native TV apps and HDMI sources such as Apple TV and NVIDIA SHIELD TV Pro. Home Assistant chooses when it appears; BACK or a timer dismisses it. Camera audio is disabled so the underlying app keeps its sound.
 
 ![LG television showing a programme with the Front Right daylight camera overlay in the upper-right corner](docs/images/lg-camera-overlay-daylight-tv.png)
