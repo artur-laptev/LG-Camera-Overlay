@@ -2,9 +2,9 @@
 
 Show a live camera panel over what you are watching on an LG webOS TV, including native TV apps and HDMI sources such as Apple TV and NVIDIA SHIELD TV Pro. Home Assistant chooses when it appears; BACK or a timer dismisses it. Camera audio is disabled so the underlying app keeps its sound.
 
-![LG television showing a programme with the Front Left live camera overlay in the upper-right corner](docs/images/lg-camera-overlay-tv.png)
+![LG television showing a programme with the Front Right daylight camera overlay in the upper-right corner](docs/images/lg-camera-overlay-daylight-tv.png)
 
-*AI-retouched illustration based on a user photo of the working installation. Cropped to the TV and perspective-corrected; fine details may differ from the original. See [validation](docs/VALIDATION.md) for test evidence.*
+![LG television showing a programme with the Front Left night camera overlay in the upper-right corner](docs/images/lg-camera-overlay-tv.png)
 
 User-confirmed viewing includes native LG apps and successful overlay appearance over **Netflix, Amazon Prime Video and Plex on both Apple TV and NVIDIA SHIELD TV Pro**, connected through HDMI to each of the two tested LG TVs. See the [viewing matrix](docs/VALIDATION.md#user-confirmed-hdmi-viewing-16-october-2026) for the exact combinations and scope.
 
