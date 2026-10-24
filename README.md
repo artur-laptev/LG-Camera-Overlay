@@ -28,6 +28,8 @@ The TV app, relay and Home Assistant configuration are three separate installati
 
 ## What it does
 
+For LG privacy settings, camera credentials and recommended network isolation, read [Privacy and network protection](docs/PRIVACY-AND-NETWORK.md). The overlay does not disable LG's underlying viewing-recognition or advertising services.
+
 - Continuous video decoded on a canvas, with a 25–55% width panel and 15–90 second duration.
 - One encoder per visible camera, shared by multiple TVs. Encoding stops when its last viewer leaves.
 - Separate pinned SSH tunnels and reconnects per TV; offline TVs are not woken.

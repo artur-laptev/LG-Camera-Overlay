@@ -1,5 +1,7 @@
 # Choose your setup: Docker installation
 
+Before setup, review [LG TV privacy and network protection](PRIVACY-AND-NETWORK.md). A proposed simpler setup wizard and HA OS installation route are described in the [installation roadmap](INSTALLATION-ROADMAP.md); they are not included in this release.
+
 This guide starts with one TV and one camera. You do not need to write code, but you will paste a few commands and replace one camera address in a settings file. Run commands one at a time; if a step reports an error, stop at that step and use the help table at the end.
 
 **What goes where?** The LG gets a small TV app. Your chosen computer runs the **relay**, which converts the camera picture for the TV. Home Assistant provides the button and optional automatic alerts. Docker runs the relay in its own container, keeping its software together.
