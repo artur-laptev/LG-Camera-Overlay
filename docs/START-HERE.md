@@ -1,6 +1,6 @@
 # Choose your setup: Docker installation
 
-Before setup, review [LG TV privacy and network protection](PRIVACY-AND-NETWORK.md). A proposed simpler setup wizard and HA OS installation route are described in the [installation roadmap](INSTALLATION-ROADMAP.md); they are not included in this release.
+Before setup, review [LG TV privacy and network protection](PRIVACY-AND-NETWORK.md).
 
 This guide starts with one TV and one camera. You do not need to write code, but you will paste a few commands and replace one camera address in a settings file. Run commands one at a time; if a step reports an error, stop at that step and use the help table at the end.
 
