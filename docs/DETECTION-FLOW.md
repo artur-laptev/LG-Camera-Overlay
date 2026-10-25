@@ -2,7 +2,7 @@
 
 The project needs two separate inputs: **a video stream to show** and, for automatic alerts, **a signal telling Home Assistant when to show it**. RTSP/RTSPS supplies the video. It does not, by itself, give this project person detection, zones or doorbell events. A manual HA button can show a camera without any detection integration.
 
-This guide describes the existing UniFi installation and how other systems could supply equivalent signals. The UniFi example is based on saved deployment configuration and user viewing reports; it is not a fresh inspection of production HA. See [tested and operating setups](VALIDATION.md#tested-and-operating-setups) for the evidence and limits.
+This guide describes a UniFi detection flow and how other systems can supply equivalent signals. See [tested and operating setups](VALIDATION.md#tested-and-operating-setups) for the evidence and limits.
 
 ## Follow the two paths
 
