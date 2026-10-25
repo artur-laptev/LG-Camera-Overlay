@@ -13,13 +13,30 @@ Status recorded 16 October 2026. “Operating reference” means the existing in
 | Reference person detection and doorbell priority | Historical real walk triggered Front Right and suppressed overlapping Front Left; physical entry ring took over during cooldown | Not exhaustive zone-boundary, road-traffic/vehicle or simultaneous physical multi-TV detection validation |
 | User photo session, 16 October 2026 | Direct launch of the existing Living Room TV app was accepted; user supplied photos showing the Front Left panel over a programme | Did not use HA detection triggers; README image is AI-retouched, not raw timing evidence |
 | Public-release lab: HA 2026.10.1 in a NAS Docker container, native LG integration, separate test TV app and native macOS ARM64 relay with software decoding | Blueprint import, inert event/counter rules and actual OLED65B9PLA video telemetry; firmware 05.50.00 / SDK 4.10.0. User subsequently confirmed correct panel appearance, continuing underlying picture/sound and roughly 30-second auto-close | The relay was on the Mac, not inside the NAS HA container; physical zone/ring inputs were not replayed through these public blueprints; physical remote BACK was not confirmed |
-| Linux x86-64 relay Docker container in CI | Real FFmpeg synthetic stream, WebSocket and cleanup checks, with simulated SSH | No physical NAS/Linux-container-to-TV route tested |
+| Linux x86-64 relay Docker container in CI | Real FFmpeg synthetic stream, WebSocket and cleanup checks, with simulated SSH | CI alone does not prove a physical TV route; the separate 25 October NAS acceptance below now covers one |
 | Windows/macOS automated tests | Node tests and relevant build checks passed | Does not prove Docker Desktop networking, startup or physical TV playback |
 | Windows Docker Desktop, Mac Docker Desktop, ARM64 Docker/Pi, shared HA/relay hosts | Documented installation approaches and resource recommendations | No end-to-end physical acceptance or benchmarked minimum for these deployments |
 | Non-UniFi detectors/cameras, including Frigate, MQTT and webhooks | Possible connection patterns described in [detection flow](DETECTION-FLOW.md) | Not tested integrations for this project; video and detection need independent validation |
-| Direct HA OS App installation | Feasible future packaging route | No App package supplied or tested |
+| Direct HA OS App installation | Experimental package supplied with v1.1.0 | **NOT TESTED**: no HA OS/Supervisor ingress or lifecycle acceptance |
+| v1.1.0 configurator and Linux x64 NAS relay → separate HA 2026.10.1 test container → OLED65B9PLA | 25 October: 18 acceptance checks; pinned pairing, test app install, real stream, HA launch and user-confirmed panel/picture/sound/auto-close | One TV/camera; not HA OS, ARM64, Docker Desktop or a sustained capacity benchmark |
 
 The NAS HA lab was stopped after testing. The operating reference app/relay was retained. Detailed release tests follow; they must not be read as certification of the untested rows above.
+
+
+## Configurator and NAS Docker acceptance, 25 October 2026
+
+The local configurator and relay were built and run on the NAS as non-root Linux x64 containers (Node v22.23.4, UID 1000, read-only filesystem, dropped capabilities, no published ports). Only the separate HA Test 2026.10.1 instance was used. The production HA configuration and operating relay were not changed.
+
+- Existing player/relay checks and all **13 Node tests** passed on Windows and inside the NAS container.
+- **18 acceptance checks passed**: request guards; FFmpeg and real camera decode; saved settings; HA discovery and generated script; unavailable-TV safeguard; real RTSP → WebSocket → decoder; viewer/encoder cleanup; pinned TV pairing; separate test app installation; HA launch; decoded TV frames; auto-close; shutdown and production-app readback.
+- OLED65B9PLA: firmware **05.50.00**, SDK **4.10.0**. The separate test package was installed through the configurator's pinned SSH adapter; the working app was not replaced.
+- The announced repeat measured first TV video **2,250 ms** after the HA launch command and about **16 fps** at **768×432**. The first run measured **2,483 ms** and about **17 fps**. These are samples, not a guaranteed rate or hardware minimum.
+- The user watched the announced repeat and confirmed **“Yes, all worked”** to correct panel display, continuing underlying picture/sound and automatic close after 30 seconds. The playback source was not recorded; physical BACK and detection-zone inputs were not part of this run.
+- The temporary test app was removed, original app metadata was unchanged, temporary NAS credential copies were removed, the test login was revoked, and HA Test/review containers were stopped.
+
+The NAS's older Docker builder required the public IPK/checksum exceptions in the root ignore file. HA Test's own Docker network resolved a container-to-host-port routing failure. These fixes are reflected in the supplied packaging and installation notes. The test reused an existing pairing key; first-time Key Server retrieval was not separately physically accepted.
+
+**HA OS App / Supervisor ingress: NOT TESTED.** Its experimental package is explicitly separate from the tested Docker route. Windows/macOS Docker Desktop and ARM64 end-to-end playback remain unverified. The configurator screenshots use sample mode and are not connection or performance evidence.
 
 ## TV software version evidence
 

@@ -29,6 +29,12 @@ jobs:
       - run: npm ci --prefix tooling --ignore-scripts
       - run: npm run build
       - run: node scripts/verify-package.cjs
+      - run: sha256sum dist/*.ipk > dist/SHA256SUMS.txt
+      - run: npm run build:setup
+      - uses: actions/upload-artifact@v4
+        with:
+          name: setup-packages
+          path: .build/setup-release/*
       - uses: actions/upload-artifact@v4
         with:
           name: tv-package

@@ -2,19 +2,23 @@
 
 [![Validation](https://github.com/mbsintegrations/LG-Camera-Overlay/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/mbsintegrations/LG-Camera-Overlay/actions/workflows/ci.yml)
 [![Release](https://img.shields.io/github/v/release/mbsintegrations/LG-Camera-Overlay?include_prereleases)](https://github.com/mbsintegrations/LG-Camera-Overlay/releases)
+[![GitHub stars](https://img.shields.io/github/stars/mbsintegrations/LG-Camera-Overlay?style=flat&logo=github)](https://github.com/mbsintegrations/LG-Camera-Overlay)
+[![NAS Docker tested](https://img.shields.io/badge/NAS_Docker-tested-2ea44f)](docs/VALIDATION.md#configurator-and-nas-docker-acceptance-25-october-2026)
+[![HA OS App untested](https://img.shields.io/badge/HA_OS_App-experimental%20%2F%20untested-orange)](docs/CONFIGURATOR.md#ha-os-app-experimental-and-not-tested)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
 
 [![PayPal](https://img.shields.io/badge/PayPal-00457C?style=flat&logo=paypal&logoColor=white)](https://paypal.me/mwahl1973)
+[![MBS Integrations](https://img.shields.io/badge/MBS_Integrations-mbsintegrations.ie-73dbe2)](https://mbsintegrations.ie)
 
 Show a live camera panel over what you are watching on an LG webOS TV, including native TV apps and HDMI sources such as Apple TV and NVIDIA SHIELD TV Pro. Home Assistant chooses when it appears; BACK or a timer dismisses it. Camera audio is disabled so the underlying app keeps its sound.
 
-![LG television showing a programme with the Front Right daylight camera overlay in the upper-right corner](docs/images/lg-camera-overlay-daylight-tv.png)
+![LG TV - Home Assistant Camera Overlay](docs/images/lg-camera-overlay-header.png)
 
 ![LG television showing a programme with the Front Left night camera overlay in the upper-right corner](docs/images/lg-camera-overlay-tv.png)
 
 User-confirmed viewing includes native LG apps and successful overlay appearance over **Netflix, Amazon Prime Video and Plex on both Apple TV and NVIDIA SHIELD TV Pro**, connected through HDMI to each of the two tested LG TVs. See the [viewing matrix](docs/VALIDATION.md#user-confirmed-hdmi-viewing-16-october-2026) for the exact combinations and scope.
 
-**[Start here: choose Windows, Mac or Linux Docker](docs/START-HERE.md)** · [Detailed installation reference](docs/INSTALL.md) · [Releases](https://github.com/mbsintegrations/LG-Camera-Overlay/releases) · [Home Assistant setup](docs/HOME-ASSISTANT.md) · [Troubleshooting](docs/TROUBLESHOOTING.md)
+**[Start here: illustrated configurator guide](docs/CONFIGURATOR.md)** · [Manual Docker routes](docs/START-HERE.md) · [Detailed installation reference](docs/INSTALL.md) · [Releases](https://github.com/mbsintegrations/LG-Camera-Overlay/releases) · [Home Assistant setup](docs/HOME-ASSISTANT.md) · [Troubleshooting](docs/TROUBLESHOOTING.md)
 
 ```mermaid
 flowchart LR
@@ -24,7 +28,15 @@ flowchart LR
   Events[Person / vehicle / doorbell] --> HA
 ```
 
-The TV app, relay and Home Assistant configuration are three separate installation steps. This uses HA's native **LG webOS TV** integration; no custom HA integration or HACS installation is needed. The relay runs on an always-available computer or locally built Docker container, which can share a Linux/NAS host with Home Assistant. **A packaged HA OS App (formerly add-on) is not included in this release.** See [hosting on HA hardware and hardware recommendations](docs/HOSTING.md) for the available options and their limits.
+The TV app, relay and Home Assistant configuration are three separate installation steps. This uses HA's native **LG webOS TV** integration; no custom HA integration or HACS installation is needed. The relay runs on an always-available computer or locally built Docker container, which can share a Linux/NAS host with Home Assistant. **v1.1.0 adds the local configurator and private deployment export. The separate HA OS App package is experimental and has NOT been tested.** See [hosting on HA hardware and hardware recommendations](docs/HOSTING.md) for the available options and their limits.
+
+## Guided installation
+
+Download **LG-Camera-Overlay-Setup-1.1.0.zip** from [v1.1.0](https://github.com/mbsintegrations/LG-Camera-Overlay/releases/tag/v1.1.0), extract it and open **Start Setup.cmd** on Windows (Node.js LTS 22+ required). Mac/Linux use `sh "Start Setup.command"`. The wizard guides TV pairing and app installation, camera settings, panel preview, HA script creation and private Docker export. The permanent relay still needs Docker or Node/FFmpeg; setup is not an unattended service installer.
+
+![Configurator host selection with sample television preview](docs/images/setup-01-host.png)
+
+**[Follow all six illustrated steps](docs/CONFIGURATOR.md)**. Screenshots use sample data. **HA OS App/ingress has not been tested**; NAS Docker acceptance does not validate it.
 
 ## What it does
 
@@ -43,7 +55,7 @@ There are two separate paths: **RTSP/RTSPS provides video; a detection signal in
 
 Read [the complete detection flow](docs/DETECTION-FLOW.md) for the UniFi setup, the distinction between camera detections and notification-zone filters, and what other systems must provide to HA. Other camera/NVR integrations, Frigate, MQTT, webhooks or separate sensors are possible trigger sources, but have not been validated by this project.
 
-**Operating reference:** UniFi Protect + HA native integrations + a native relay on an Apple Silicon Mac mini + LG OLED65B9PLA and 65NANO766QA. This installation predates public v1.0.0. Public-release tests used a separate NAS-hosted HA Docker lab and a native Mac relay; the relay Docker container was tested separately in CI. See the [tested and operating setup matrix](docs/VALIDATION.md#tested-and-operating-setups) before choosing a deployment.
+**Operating reference:** UniFi Protect + HA native integrations + a native relay on an Apple Silicon Mac mini + LG OLED65B9PLA and 65NANO766QA. This installation predates public v1.0.0. The v1.1.0 configurator/relay also passed an actual NAS Docker → HA Test → Living Room LG test on 25 October 2026, including user-confirmed picture/sound and automatic close. See the [tested and operating setup matrix](docs/VALIDATION.md#tested-and-operating-setups) before choosing a deployment.
 
 ## Compatibility
 

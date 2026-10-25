@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="setup-session" content="__SESSION__" />
+    <title>Camera Overlay · MBS Integrations</title>
+    <link rel="stylesheet" href="wizard.css" />
+  </head>
+  <body>
+    <aside class="sidebar">
+      <div class="brand">
+        <span class="brand-icon">◇</span>
+        <div>MBS<small>INTEGRATIONS</small></div>
+      </div>
+      <p class="product">CAMERA OVERLAY · SETUP</p>
+      <nav aria-label="Setup steps">
+        <button data-step="0" class="active"><span>01</span>Your setup</button
+        ><button data-step="1"><span>02</span>Your television</button
+        ><button data-step="2"><span>03</span>Your cameras</button
+        ><button data-step="3"><span>04</span>The camera panel</button
+        ><button data-step="4"><span>05</span>Home Assistant</button
+        ><button data-step="5"><span>06</span>Finish & test</button>
+      </nav>
+      <div class="sidebar-foot">
+        <p>A little more awareness.<br />Without missing the moment.</p>
+        <small
+          >Version 1.1.0<br />Settings stay private in this
+          configurator.</small
+        >
+      </div>
+    </aside>
+    <main>
+      <header>
+        <span>YOUR CAMERAS. ON YOUR TV.</span>
+        <div>
+          <button id="import-profile" class="quiet">Import layout</button
+          ><button id="export-profile" class="quiet">Save layout</button
+          ><input
+            id="profile-file"
+            type="file"
+            accept="application/json,.json"
+            hidden
+          />
+        </div>
+      </header>
+      <div id="preview-banner" class="banner" hidden>
+        Sample preview · explore every step without connecting to your home.
+      </div>
+      <div class="title">
+        <span id="eyebrow">STEP 01 OF 06</span>
+        <h1 id="heading">Make yourself at home.</h1>
+        <p id="intro">
+          Choose where your camera relay will run. We’ll guide you through the
+          rest.
+        </p>
+      </div>
+      <div class="workspace">
+        <div class="forms">
+          <section data-page="0">
+            <div class="card">
+              <h2>Where will it run?</h2>
+              <p>
+                The relay prepares the camera picture for your TV. This device
+                needs to stay on while you want alerts.
+              </p>
+              <div class="choices" id="host-options">
+                <label
+                  ><input
+                    type="radio"
+                    name="host"
+                    value="windows"
+                    checked
+                  /><strong>Windows PC</strong
+                  ><small>Docker Desktop</small></label
+                ><label
+                  ><input type="radio" name="host" value="mac" /><strong
+                    >Mac</strong
+                  ><small>Docker Desktop</small></label
+                ><label
+                  ><input type="radio" name="host" value="linux" /><strong
+                    >Linux computer</strong
+                  ><small>Docker Engine</small></label
+                ><label
+                  ><input type="radio" name="host" value="nas" /><strong
+                    >NAS</strong
+                  ><small>Container Manager / Docker</small></label
+                ><label
+                  ><input type="radio" name="host" value="haos" /><strong
+                    >Home Assistant OS</strong
+                  ><small>Experimental · untested</small></label
+                >
+              </div>
+              <label class="field"
+                >Where is Home Assistant?<select id="ha-location">
+                  <option value="elsewhere">On another device</option>
+                  <option value="same">On this same device</option>
+                </select></label
+              >
+              <div class="callout" id="host-help"></div>
+              <button class="quiet" id="check-tools">
+                Check this computer
+              </button>
+              <p id="tools-result" class="result" role="status"></p>
+            </div>
+          </section>
+          <section data-page="1" hidden>
+            <div class="card">
+              <h2>Connect your LG</h2>
+              <p>
+                Open Developer Mode on the TV, turn on Key Server and enter the
+                address shown there.
+              </p>
+              <label class="field"
+                >Existing pairing<select id="profile">
+                  <option value="">Set up a new TV</option></select
+                ><small
+                  >Reuse a recognised CLI pairing when available.</small
+                ></label
+              ><label class="field"
+                >TV name<input
+                  id="tv-id"
+                  value="living_room"
+                  maxlength="41"
+                  autocomplete="off"
+                /><small>For example living_room or bedroom.</small></label
+              ><label class="field"
+                >TV address<input
+                  id="tv-host"
+                  placeholder="192.168.1.50"
+                  autocomplete="off" /></label
+              ><label class="field"
+                >Developer Mode passphrase<input
+                  id="tv-pass"
+                  type="password"
+                  autocomplete="off" /></label
+              ><button class="primary" id="prepare-tv">
+                Connect to this TV
+              </button>
+              <div id="pin-review" class="callout" hidden>
+                <strong>Check your television</strong>
+                <p id="pin-host"></p>
+                <code id="pin-value"></code
+                ><label class="check"
+                  ><input id="pin-trust" type="checkbox" />This is my TV on my
+                  trusted home network.</label
+                ><button id="confirm-tv" class="primary">
+                  Confirm & save pairing
+                </button>
+              </div>
+              <p id="tv-result" class="result" role="status"></p>
+            </div>
+            <div class="card">
+              <h2>Install the TV app</h2>
+              <p>
+                Use the same pairing to install Camera Overlay. Existing camera
+                settings are kept.
+              </p>
+              <label class="field"
+                >Paired TV<select id="install-tv" data-tv></select></label
+              ><button class="quiet" id="install-tv-button">
+                Install Camera Overlay…
+              </button>
+              <p id="install-result" class="result" role="status"></p>
+            </div>
+          </section>
+          <section data-page="2" hidden>
+            <div class="card">
+              <h2>Add a camera</h2>
+              <p>
+                Copy the RTSP or RTSPS address from your camera system. Use a
+                medium-quality stream or substream to start.
+              </p>
+              <label class="field"
+                >Camera name<input
+                  id="camera-id"
+                  value="entrance"
+                  maxlength="41"
+                  autocomplete="off" /></label
+              ><label class="field"
+                >Private camera address<input
+                  id="camera-url"
+                  type="password"
+                  placeholder="rtsp://… or rtsps://…"
+                  autocomplete="off"
+              /></label>
+              <div class="actions">
+                <button id="save-camera" class="primary">Save camera</button
+                ><button id="test-camera" class="quiet">
+                  Check camera picture
+                </button>
+              </div>
+              <p id="camera-result" class="result" role="status"></p>
+              <details>
+                <summary>Using UniFi Protect?</summary>
+                <p>
+                  Open the camera’s settings in Protect and copy its supported
+                  RTSP/RTSPS stream address. A browser sharing link is
+                  different. Camera video does not itself provide person or
+                  doorbell alerts; those are selected in HA later.
+                </p>
+              </details>
+              <div id="saved-cameras" class="chips"></div>
+            </div>
+          </section>
+          <section data-page="3" hidden>
+            <div class="card">
+              <h2>A panel that fits your screen</h2>
+              <label class="field"
+                >Camera label<input
+                  id="label"
+                  value="Entrance"
+                  maxlength="80" /></label
+              ><label class="field"
+                >Panel size <output id="width-value">42%</output
+                ><input
+                  type="range"
+                  id="width"
+                  min="25"
+                  max="55"
+                  value="42" /></label
+              ><label class="field"
+                >How long should it stay?
+                <output id="duration-value">30 seconds</output
+                ><input type="range" id="duration" min="15" max="90" value="30"
+              /></label>
+              <p>
+                Camera sound is muted. Your programme keeps playing underneath.
+                BACK dismisses the panel.
+              </p>
+            </div>
+          </section>
+          <section data-page="4" hidden>
+            <div class="card">
+              <h2>Find your TV in Home Assistant</h2>
+              <p>
+                Optional: connect to find entity names. You can also enter the
+                TV entity below without connecting.
+              </p>
+              <label class="field"
+                >Home Assistant address<input
+                  id="ha-url"
+                  type="url"
+                  placeholder="https://home.example.com"
+                  autocomplete="off" /></label
+              ><label class="field"
+                >Access token<input
+                  id="ha-token"
+                  type="password"
+                  autocomplete="off"
+                /><small
+                  >Use a dedicated non-admin account. The token stays in this
+                  setup session, not the TV package.</small
+                ></label
+              ><label class="check"
+                ><input id="allow-http" type="checkbox" />Allow HTTP for my
+                trusted local network.</label
+              >
+              <div class="actions">
+                <button class="primary" id="connect-ha">Find my entities</button
+                ><button class="quiet" id="disconnect-ha">Disconnect</button>
+              </div>
+              <p id="ha-result" class="result" role="status"></p>
+            </div>
+            <div class="card">
+              <h2>Create your camera button</h2>
+              <label class="field"
+                >LG TV entity<input
+                  id="ha-entity"
+                  list="entities"
+                  placeholder="media_player.living_room_tv" /><datalist
+                  id="entities"
+                ></datalist
+              ></label>
+              <div class="two">
+                <label class="field"
+                  >TV<select id="route-tv" data-tv></select></label
+                ><label class="field"
+                  >Camera<select id="route-camera" data-camera></select
+                ></label>
+              </div>
+              <a
+                href="https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2Fmbsintegrations%2FLG-Camera-Overlay%2Fblob%2Fmain%2Fblueprints%2Fscript%2Fcamera-overlay.yaml"
+                target="_blank"
+                rel="noopener noreferrer"
+                >1. Import the launch blueprint into HA ↗</a
+              >
+              <p>
+                Then download the generated settings and paste them into a new
+                HA script’s YAML editor.
+              </p>
+              <button id="script-download" class="quiet">
+                2. Download private HA script
+              </button>
+              <p class="small">
+                Automatic person, vehicle and doorbell alerts remain a separate
+                HA setup step.
+              </p>
+            </div>
+          </section>
+          <section data-page="5" hidden>
+            <div class="card">
+              <h2>Your installation</h2>
+              <div id="finish-summary"></div>
+              <button class="primary" id="bundle-download">
+                Download private installation bundle…
+              </button>
+              <p>
+                The bundle includes camera addresses, TV keys, ready-made Docker
+                settings and your HA script. Keep it private.
+              </p>
+              <div class="callout" id="deploy-help"></div>
+              <label class="check"
+                ><input id="renew" type="checkbox" />Let this relay maintain
+                Developer Mode for these TVs.</label
+              >
+              <p class="small">
+                Leave this off if Launcher or another service already handles
+                renewal.
+              </p>
+              <button id="save-settings" class="quiet">
+                Save maintenance choice
+              </button>
+            </div>
+            <div class="card">
+              <h2>Try it on your television</h2>
+              <p>
+                Start the deployed relay first. With your programme playing,
+                send a 30-second camera test to the selected LG.
+              </p>
+              <button id="test-tv" class="primary">
+                Show camera on selected TV…
+              </button>
+              <p id="test-result" class="result" role="status"></p>
+              <details>
+                <summary>Temporary relay on this setup computer</summary>
+                <p>
+                  Requires FFmpeg here. This relay stops when setup closes; it
+                  is not an unattended installation.
+                </p>
+                <div class="actions">
+                  <button id="start-relay" class="quiet">
+                    Start temporary relay</button
+                  ><button id="stop-relay" class="quiet">
+                    Stop my temporary relay
+                  </button>
+                </div>
+              </details>
+              <button id="refresh-status" class="quiet">
+                Check relay connection
+              </button>
+              <p id="relay-result" class="result" role="status"></p>
+              <p class="small">
+                After the test, check moving video, continuing sound and
+                automatic close. Try BACK on a second run.
+              </p>
+            </div>
+            <button id="report-download" class="quiet">
+              Download redacted support report
+            </button>
+          </section>
+        </div>
+        <aside class="preview">
+          <div class="preview-heading">
+            <strong>On your TV</strong><span class="pill">SAMPLE PREVIEW</span>
+          </div>
+          <div class="tv">
+            <div class="landscape">
+              <div class="sun"></div>
+              <div class="mountain one"></div>
+              <div class="mountain two"></div>
+              <div class="lake"></div>
+              <span class="programme"
+                >THE QUIET PLACES<span
+                  >A moment away from the everyday.</span
+                ></span
+              >
+            </div>
+            <div class="overlay" id="camera-panel">
+              <div class="overlay-top">
+                <span id="panel-label">Entrance</span><small>SAMPLE</small>
+              </div>
+              <div class="camera-scene">
+                <div class="house"></div>
+                <div class="drive"></div>
+              </div>
+              <div class="overlay-bottom">
+                <span>Live camera</span
+                ><span id="panel-duration"
+                  >Closes in 30s · BACK to dismiss</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="preview-caption">
+            Your programme continues. Your camera appears above it.
+          </div>
+          <div class="numbers">
+            <div><strong id="count-tvs">0</strong><span>TVs saved</span></div>
+            <div>
+              <strong id="count-cameras">0</strong><span>Cameras saved</span>
+            </div>
+            <div>
+              <strong id="count-duration">30s</strong><span>Display time</span>
+            </div>
+          </div>
+          <div class="note">
+            <strong>One step at a time.</strong>
+            <p id="preview-note">
+              Start with one television and one camera. Add more when you’re
+              happy with the first.
+            </p>
+          </div>
+        </aside>
+      </div>
+      <footer>
+        <button class="quiet" id="back">Previous</button>
+        <div id="status" role="status" aria-live="polite"></div>
+        <button class="primary" id="next">Continue →</button>
+      </footer>
+    </main>
+    <script src="wizard.js"></script>
+  </body>
+</html>

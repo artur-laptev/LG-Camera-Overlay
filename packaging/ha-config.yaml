@@ -1,0 +1,21 @@
+name: LG Camera Overlay (EXPERIMENTAL - NOT TESTED)
+version: 1.1.0-experimental
+slug: lg_camera_overlay
+description: Local camera overlay relay and guided TV setup
+arch:
+  - amd64
+  - aarch64
+startup: application
+boot: manual
+init: false
+ingress: true
+ingress_port: 8099
+panel_icon: mdi:television-play
+panel_title: Camera Overlay
+panel_admin: true
+homeassistant_api: false
+hassio_api: false
+host_network: false
+ports: {}
+options: {}
+schema: {}

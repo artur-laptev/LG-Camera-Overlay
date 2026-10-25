@@ -1,5 +1,7 @@
 # Choose your setup: Docker installation
 
+**Prefer the graphical setup? Use the [illustrated configurator guide](CONFIGURATOR.md).** It saves settings and generates the private Docker bundle for you. The manual route below remains available, including the existing v1.0.0 source instructions.
+
 Before setup, review [LG TV privacy and network protection](PRIVACY-AND-NETWORK.md).
 
 This guide starts with one TV and one camera. You do not need to write code, but you will paste a few commands and replace one camera address in a settings file. Run commands one at a time; if a step reports an error, stop at that step and use the help table at the end.
@@ -19,11 +21,11 @@ Choose the computer that will run the relay, not the computer you happen to be r
 | Linux computer | On another device | [Linux preparation](#linux-preparation), then [HA elsewhere](#ha-elsewhere) |
 | Linux computer | Already on this computer in Docker or a VM | [Linux preparation](#linux-preparation), then [HA-on-this-computer](#ha-on-this-computer) |
 
-**Using HA OS directly on the hardware, such as HA Green?** These Docker commands cannot be pasted into HA OS. Choose another relay computer. A future HA OS App could provide that installation route, but this release does not include one. A NAS with its own container manager may use the [NAS instructions](INSTALL.md#6-docker--nas-option); its folder permissions depend on the NAS.
+**Using HA OS directly on the hardware, such as HA Green?** These Docker commands cannot be pasted into HA OS. Choose another relay computer. An experimental HA OS App package now exists, but it has **NOT been tested**. Do not treat it as the tested Docker route; see [its limits](CONFIGURATOR.md#ha-os-app-experimental-and-not-tested). A NAS with its own container manager may use the [NAS instructions](INSTALL.md#6-docker--nas-option); its folder permissions depend on the NAS.
 
 **No Home Assistant anywhere yet?** This guide assumes a working HA installation. Set that up using the [official HA installation guide](https://www.home-assistant.io/installation/) first, then return here. “HA elsewhere” means you already have HA on another device; it does not mean HA is optional for these instructions.
 
-**Before buying hardware:** read [hardware recommendations](HOSTING.md). Windows/macOS Docker Desktop and ARM64 container-to-TV operation have not been physically validated by this project. These are documented setup routes requiring your own viewing checks, not certified combinations. Linux x86-64 container CI and native Mac viewing have separate evidence in [validation](VALIDATION.md).
+**Before buying hardware:** read [hardware recommendations](HOSTING.md). Windows/macOS Docker Desktop and ARM64 container-to-TV operation have not been physically validated by this project. These are documented setup routes requiring your own viewing checks, not certified combinations. Linux x86-64 NAS-to-TV acceptance, container CI and native Mac viewing have separate evidence in [validation](VALIDATION.md).
 
 ### Windows preparation
 

@@ -1,6 +1,6 @@
 # Hosting on Home Assistant hardware
 
-Ready to install? [Choose your setup](START-HERE.md) provides step-by-step Docker routes for Windows, Mac and Linux, with HA on the same computer or elsewhere.
+Ready to install? Use the [illustrated configurator](CONFIGURATOR.md). [Choose your setup](START-HERE.md) provides step-by-step Docker routes for Windows, Mac and Linux, with HA on the same computer or elsewhere.
 
 You do not necessarily need another computer. The Node/FFmpeg relay can share a suitable host with Home Assistant, provided there is enough spare capacity for video decoding and encoding. The TV app still runs on the LG, and HA still uses its native LG integration to launch it.
 
@@ -10,12 +10,12 @@ You do not necessarily need another computer. The Node/FFmpeg relay can share a 
 |---|---|---|
 | HA Container on Linux or a Docker-capable NAS | Run the supplied Compose service as a separate container on the same host | Available now; follow [installation step 6](INSTALL.md#6-docker--nas-option) |
 | HA OS in a virtual machine | Run the relay in a separate Linux VM or container on the underlying host, if supported | Existing relay can be used; allocate resources separately from the HA VM |
-| HA OS installed directly on the machine | Package the relay as an HA App (formerly add-on), managed by Supervisor | Technically feasible, but no App package or App Store installation is provided by this release |
+| HA OS installed directly on the machine | Package the relay as an HA App (formerly add-on), managed by Supervisor | Experimental local App package provided; **NOT TESTED** on HA OS/Supervisor; no one-click App repository |
 | Another always-on computer | Run the native relay or a locally built Docker container | Available now; useful when HA hardware has little spare capacity |
 
 HA OS supports Apps; HA Container does not provide the App system and requires you to manage sibling services yourself. See the official [installation types](https://www.home-assistant.io/installation/#about-installation-types). Do not install Node/FFmpeg inside HA Core's container or treat a terminal App as a permanent relay host. The supplied Compose instructions target a host you manage, not the HA OS host shell.
 
-An HA OS App would need its own manifest, startup/configuration handling, persistent private key storage, build distribution and lifecycle testing. Both `amd64` and `aarch64` would need validation before claiming support. This is a possible future packaging route, not an implemented feature. See the official [App configuration documentation](https://developers.home-assistant.io/docs/apps/configuration/).
+The experimental HA OS App includes a manifest, ingress setup UI and persistent private storage, but **has not been tested on HA OS or Supervisor**. Both `amd64` and `aarch64` still need App installation, ingress and lifecycle validation. The successful NAS Docker test is not evidence for this App route. See the official [App configuration documentation](https://developers.home-assistant.io/docs/apps/configuration/).
 
 ## Hardware requirements and recommendations
 
@@ -25,8 +25,8 @@ An HA OS App would need its own manifest, startup/configuration handling, persis
 |---|---|---|
 | One active camera on a shared HA/relay host | Modern 64-bit x86 mini-PC or NAS, four CPU cores, 8 GB total RAM, SSD and wired Ethernet | Aim to leave roughly two cores' worth of CPU headroom and 1 GiB available RAM for a one-camera trial, beyond HA and other services; measure actual demand |
 | Existing always-on Mac | Reuse it if it has spare CPU/RAM | Native Apple Silicon operation has been exercised; this does not establish a minimum Mac model or capacity |
-| Raspberry Pi 5 with 4 or 8 GB RAM | Experimental candidate with cooling and a low-resolution camera substream, using a managed Linux/Docker host | ARM64 Docker and physical TV operation on Pi have not been validated; HA OS still needs an App package |
-| HA Green or another small, busy HA appliance | Prefer an existing external relay host | No project transcoding benchmark or HA OS App is available for these devices |
+| Raspberry Pi 5 with 4 or 8 GB RAM | Experimental candidate with cooling and a low-resolution camera substream, using a managed Linux/Docker host | ARM64 Docker and physical TV operation on Pi have not been validated; the experimental HA OS App is untested |
+| HA Green or another small, busy HA appliance | Prefer an existing external relay host | No project transcoding benchmark or tested HA OS App is available for these devices |
 | Several different cameras visible at once | Start with a larger host or keep the relay separate from HA | Measure each additional camera under normal household load; there is no certified camera-count limit |
 
 Prefer trying an existing suitable NAS or computer before buying hardware. For a new shared host, the x86/8 GB/SSD starting point above offers a more practical validation target than sizing to HA's own minimum requirements. HA's published minimum describes HA itself, not the extra video workload here.
