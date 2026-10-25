@@ -1,10 +1,9 @@
 # LG Camera Overlay
 
 [![Validation](https://github.com/mbsintegrations/LG-Camera-Overlay/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/mbsintegrations/LG-Camera-Overlay/actions/workflows/ci.yml)
-[![Release](https://img.shields.io/github/v/release/mbsintegrations/LG-Camera-Overlay?include_prereleases)](https://github.com/mbsintegrations/LG-Camera-Overlay/releases)
+[![Release](https://img.shields.io/github/v/release/mbsintegrations/LG-Camera-Overlay?cacheSeconds=300&v=1.1.0)](https://github.com/mbsintegrations/LG-Camera-Overlay/releases)
 [![GitHub stars](https://img.shields.io/github/stars/mbsintegrations/LG-Camera-Overlay?style=flat&logo=github)](https://github.com/mbsintegrations/LG-Camera-Overlay)
 [![NAS Docker tested](https://img.shields.io/badge/NAS_Docker-tested-2ea44f)](docs/VALIDATION.md#configurator-and-nas-docker-acceptance-25-october-2026)
-[![HA OS App untested](https://img.shields.io/badge/HA_OS_App-experimental%20%2F%20untested-orange)](docs/CONFIGURATOR.md#ha-os-app-experimental-and-not-tested)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
 
 [![PayPal](https://img.shields.io/badge/PayPal-00457C?style=flat&logo=paypal&logoColor=white)](https://paypal.me/mwahl1973)
