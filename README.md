@@ -11,6 +11,20 @@
 
 Show a live camera panel over what you are watching on an LG webOS TV, including native TV apps and HDMI sources such as Apple TV and NVIDIA SHIELD TV Pro. Home Assistant chooses when it appears; BACK or a timer dismisses it. Camera audio is disabled so the underlying app keeps its sound.
 
+## What it does
+
+- Shows a live camera in a small panel over your TV programme, without switching away from it or replacing its sound.
+- Lets Home Assistant show the panel from a dashboard button or an automation, such as a person detection or doorbell press.
+- Closes automatically after your chosen time, or when you press BACK on the TV remote.
+
+## What you need
+
+- **Home Assistant**, with its built-in **LG webOS TV** integration connected to your TV. No HACS integration is required.
+- **A compatible LG webOS TV**, with LG Developer Mode enabled and the Camera Overlay TV app installed. Check the [tested models and software](#compatibility).
+- **A camera or recorder with an accessible RTSP/RTSPS video stream.** UniFi Protect is tested; other cameras depend on stream compatibility. For automatic alerts, your camera system or another sensor must also send a detection/event to Home Assistant.
+- **An always-on computer or Docker-capable NAS** to run the video relay. Its FFmpeg component converts the camera stream for the TV; the TV app displays it. This can share a suitable Linux/NAS host with Home Assistant, or run on a separate machine. See [hardware and hosting options](docs/HOSTING.md).
+- **Network access between these devices**, plus Node.js 22 or newer on the computer where you open the configurator. The [six-step setup guide](docs/CONFIGURATOR.md) walks you through pairing, camera settings and installation.
+
 ![LG TV - Home Assistant Camera Overlay](docs/images/lg-camera-overlay-header.png)
 
 ![LG television showing a programme with the Front Left night camera overlay in the upper-right corner](docs/images/lg-camera-overlay-tv.png)
@@ -37,7 +51,7 @@ Download **LG-Camera-Overlay-Setup-1.1.0.zip** from [v1.1.0](https://github.com/
 
 **[Follow all six illustrated steps](docs/CONFIGURATOR.md)**. Screenshots use sample data. **HA OS App/ingress has not been tested**; NAS Docker acceptance does not validate it.
 
-## What it does
+## Additional features
 
 For LG privacy settings, camera credentials and recommended network isolation, read [Privacy and network protection](docs/PRIVACY-AND-NETWORK.md). The overlay does not disable LG's underlying viewing-recognition or advertising services.
 
