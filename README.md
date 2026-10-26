@@ -82,7 +82,7 @@ Recorded TV software versions:
 
 These are recorded device values, not minimum requirements. The SDK version is the TV's reported `sdkVersion`; a separate webOS marketing/platform version was not captured. Firmware and SDK values are not interchangeable. See [version evidence](docs/VALIDATION.md#tv-software-version-evidence) for dates and limits.
 
-**Community-tested TV:** a user reported the overlay working on **OLED77C2AUA / webOS26 11.2.0-3704** (report received 26 October 2026). The webOS version is reproduced as supplied; firmware and SDK values were not separately provided. See [community test results](docs/VALIDATION.md#community-tested-tvs).
+**Community-tested TV:** a user reported the overlay working on **OLED77C2AUA / webOS26 11.2.0-3704** (report received 26 October 2026), including all streaming apps they tested. The webOS version is reproduced as supplied; firmware and SDK values were not separately provided. See [community test results](docs/VALIDATION.md#community-tested-tvs).
 
 The predecessor deployment was physically confirmed on **OLED65B9PLA / SDK 4.10.0** over YouTube and Netflix, and **65NANO766QA / SDK 7.6.0** over Netflix. These are historical observations, not certification of every firmware or this release. See [release validation](docs/VALIDATION.md) for new-build evidence and remaining limits.
 

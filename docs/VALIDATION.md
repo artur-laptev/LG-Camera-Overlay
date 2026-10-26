@@ -50,9 +50,9 @@ An additional **55NANO766QA** reported firmware **04.60.91** and SDK **7.6.0** t
 
 | LG TV model | Software as reported | Result | Report received |
 |---|---|---|---|
-| OLED77C2AUA | webOS26 11.2.0-3704 | User-reported working | 26 October 2026 |
+| OLED77C2AUA | webOS26 11.2.0-3704 | User-reported working with all streaming apps they tested | 26 October 2026 |
 
-This community report was relayed by the maintainer. Firmware and SDK values, overlay release and playback source were not separately supplied.
+This community report was relayed by the maintainer. Individual app names/versions, playback paths, firmware and SDK values, and overlay release were not separately supplied.
 
 ## Release preparation, 15 October 2026
 
