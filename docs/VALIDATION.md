@@ -46,6 +46,14 @@ A separate webOS marketing/platform version was not captured. Firmware and SDK a
 
 An additional **55NANO766QA** reported firmware **04.60.91** and SDK **7.6.0** through the Developer Mode CLI on 16 October 2026. Its overlay test was cancelled before app installation or playback, so it is **not a tested overlay model**. Matching firmware and SDK alone do not establish compatibility.
 
+## Community-tested TVs
+
+| LG TV model | Software as reported | Result | Report received |
+|---|---|---|---|
+| OLED77C2AUA | webOS26 11.2.0-3704 | User-reported working | 26 October 2026 |
+
+This community report was relayed by the maintainer. Firmware and SDK values, overlay release and playback source were not separately supplied.
+
 ## Release preparation, 15 October 2026
 
 Automated checks cover app launch/relaunch cleanup, stale callbacks, BACK and timeout, URL and size/duration bounds; shared encoders, independent TV replacement, slow clients, rejected routes, pinned SSH identity, software fallback, spawn-failure cleanup, private stderr suppression, per-TV renewal thresholds and retry scheduling; and strict configuration validation.
