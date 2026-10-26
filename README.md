@@ -94,6 +94,10 @@ The transparent overlay window flag is not a documented LG compatibility contrac
 
 The relay accepts RTSP/RTSPS camera URLs. UniFi Protect is the original tested source. Other cameras depend on the installed FFmpeg build and are not individually certified. There is no cloud relay or video recording feature. Startup consumes part of the chosen display duration; latency varies with camera stream, network, server and TV.
 
+## Next release
+
+See the [next-release TODO list](TODO.md) for planned additions.
+
 ## Project contents
 
 | Path | Purpose |
