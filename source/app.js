@@ -23,9 +23,9 @@
  }
  function bounded(value,low,high,fallback){value=Number(value);return isFinite(value)&&value>0?Math.max(low,Math.min(high,value)):fallback;}
  function style(p){
-  var place=places[p.position]||places["top-right"],compact=p.compact===true||p.compact==="true",border=!(p.border===false||p.border==="false");
+  var place=Object.prototype.hasOwnProperty.call(places,p.position)?places[p.position]:places["top-right"],compact=p.compact===true||p.compact==="true",border=!(p.border===false||p.border==="false");
   var m=p.margin===undefined||p.margin===null||p.margin===""?3:Number(p.margin),edge;
-  if(!isFinite(m)||m<0||m>10)m=3;
+  if(!isFinite(m)||m<0||m>10||Math.floor(m)!==m)m=3;
   edge=function(v){return v==="m"?m+"vw":v;};
   showFps=!(p.fps===false||p.fps==="false");
   var color=typeof p.borderColor==="string"&&/^#[0-9a-fA-F]{6}$/.test(p.borderColor)?p.borderColor:"#67dfad";

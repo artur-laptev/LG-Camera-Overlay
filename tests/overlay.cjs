@@ -18,7 +18,10 @@ handlers.webOSRelaunch({detail:{...params,fps:false}});clock+=100;options.onVide
 handlers.webOSRelaunch({detail:{...params,position:'center'}});assert.equal(nodes.panel.style.transform,'translate(-50%,-50%)');assert.equal(nodes.panel.className,'');
 handlers.webOSRelaunch({detail:{...params,position:'center',margin:7}});assert.equal(nodes.panel.style.top,'50%');
 handlers.webOSRelaunch({detail:{...params,position:'top-left',margin:'7'}});assert.equal(nodes.panel.style.left,'7vw');assert.equal(nodes.panel.style.top,'7vw');assert.equal(nodes.panel.style.right,'auto');
+for(const position of ['constructor','__proto__','toString','hasOwnProperty']){handlers.webOSRelaunch({detail:{...params,position}});assert.equal(nodes.panel.style.top,'3vw');assert.equal(nodes.panel.style.right,'3vw');assert.equal(nodes.panel.style.bottom,'auto');assert.equal(nodes.panel.style.transform,'none');}
+for(const margin of [2.5,'2.5',0.1,-1,11]){handlers.webOSRelaunch({detail:{...params,margin}});assert.equal(nodes.panel.style.right,'3vw');}
+handlers.webOSRelaunch({detail:{...params,margin:'0'}});assert.equal(nodes.panel.style.right,'0vw');
 handlers.webOSRelaunch({detail:{...params,position:'javascript:x',margin:'99;x',border:'no',borderColor:'red;background:url(x)',compact:'yes'}});assert.equal(nodes.panel.style.right,'3vw');assert.equal(nodes.panel.style.borderWidth,'3px');assert.equal(nodes.panel.style.transform,'none');assert.equal(nodes.panel.style.borderColor,'#67dfad');assert.equal(nodes.panel.className,'');
 handlers.pagehide();assert.equal(timers.size,0);
 handlers.webOSRelaunch({detail:params});const auto=[...timers.values()].find(t=>t.type==='timeout');assert.equal(auto.t,45000);auto.f();assert.equal(closed,2);assert.equal(timers.size,0);
-console.log('PASS: first-frame timing once per session, live player lifecycle, relaunch cleanup, old-frame rejection, BACK, URL validation, size/duration bounds, position/margin/border/fps/compact styling and fallbacks');
+console.log('PASS: first-frame timing once per session, live player lifecycle, relaunch cleanup, old-frame rejection, BACK, URL validation, size/duration bounds, position/margin/border/fps/compact styling and fallbacks (inherited names, fractional margins)');

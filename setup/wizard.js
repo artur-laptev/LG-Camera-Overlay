@@ -183,6 +183,7 @@ function update() {
   preview.borderWidth = $("border").checked ? "1px" : "0";
   $("border-color").disabled = !$("border").checked;
   $("camera-panel").classList.toggle("compact", $("compact").checked);
+  $("panel-status").textContent = $("fps").checked ? "LIVE · 25 fps" : "LIVE";
   $("margin-value").textContent = m + "%";
   $("width-value").textContent = $("width").value + "%";
   $("duration-value").textContent = $("duration").value + " seconds";
